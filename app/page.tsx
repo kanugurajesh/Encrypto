@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Copy, RefreshCw, Shield } from "lucide-react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 export default function PasswordGenerator() {
@@ -111,7 +112,8 @@ export default function PasswordGenerator() {
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 flex items-center justify-center p-4">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
-          <Shield className="w-12 h-12 mx-auto text-primary mb-4" />
+          <Image src="/encrypted.png" width={48} height={48} alt="logo" />
+          {/* <Shield className="w-12 h-12 mx-auto text-primary mb-4" /> */}
           <h1 className="text-3xl font-bold text-white">Encrypto</h1>
           <p className="text-gray-400 mt-2">Create strong, secure passwords instantly</p>
         </div>
