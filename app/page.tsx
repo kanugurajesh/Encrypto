@@ -30,7 +30,11 @@ export default function PasswordGenerator() {
   };
 
   const generatePassword = () => {
-    if (!Object.values(options).some((opt) => opt === true && opt !== options.excludeSimilar)) {
+    if (
+      !Object.values(options).some(
+        (opt) => opt === true && opt !== options.excludeSimilar
+      )
+    ) {
       toast({
         title: "Error",
         description: "Please select at least one character type",
@@ -62,10 +66,14 @@ export default function PasswordGenerator() {
 
     // Ensure at least one character from each selected type
     let finalPassword = result;
-    if (options.uppercase) finalPassword = ensureCharType(finalPassword, charSets.uppercase);
-    if (options.lowercase) finalPassword = ensureCharType(finalPassword, charSets.lowercase);
-    if (options.numbers) finalPassword = ensureCharType(finalPassword, charSets.numbers);
-    if (options.symbols) finalPassword = ensureCharType(finalPassword, charSets.symbols);
+    if (options.uppercase)
+      finalPassword = ensureCharType(finalPassword, charSets.uppercase);
+    if (options.lowercase)
+      finalPassword = ensureCharType(finalPassword, charSets.lowercase);
+    if (options.numbers)
+      finalPassword = ensureCharType(finalPassword, charSets.numbers);
+    if (options.symbols)
+      finalPassword = ensureCharType(finalPassword, charSets.symbols);
 
     setPassword(finalPassword);
   };
@@ -99,7 +107,13 @@ export default function PasswordGenerator() {
     return strength;
   };
 
-  const strengthLabels = ["Very Weak", "Weak", "Medium", "Strong", "Very Strong"];
+  const strengthLabels = [
+    "Very Weak",
+    "Weak",
+    "Medium",
+    "Strong",
+    "Very Strong",
+  ];
   const strengthColors = [
     "bg-red-500",
     "bg-orange-500",
@@ -111,11 +125,12 @@ export default function PasswordGenerator() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 flex items-center justify-center p-4">
       <div className="w-full max-w-md space-y-8">
-        <div className="text-center">
+        <div className="text-center flex flex-col items-center gap-2">
           <Image src="/encrypted.png" width={48} height={48} alt="logo" />
-          {/* <Shield className="w-12 h-12 mx-auto text-primary mb-4" /> */}
           <h1 className="text-3xl font-bold text-white">Encrypto</h1>
-          <p className="text-gray-400 mt-2">Create strong, secure passwords instantly</p>
+          <p className="text-gray-400 mt-2">
+            Create strong, secure passwords instantly
+          </p>
         </div>
 
         <div className="bg-gray-800/50 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-gray-700">
@@ -156,7 +171,9 @@ export default function PasswordGenerator() {
                     key={i}
                     className={cn(
                       "flex-1 rounded-full transition-all",
-                      i < getPasswordStrength() ? strengthColors[getPasswordStrength() - 1] : "bg-gray-700"
+                      i < getPasswordStrength()
+                        ? strengthColors[getPasswordStrength() - 1]
+                        : "bg-gray-700"
                     )}
                   />
                 ))}
@@ -169,7 +186,9 @@ export default function PasswordGenerator() {
 
           <div className="mt-6 space-y-4">
             <div className="space-y-2">
-              <label className="text-sm text-gray-300">Password Length: {length[0]}</label>
+              <label className="text-sm text-gray-300">
+                Password Length: {length[0]}
+              </label>
               <Slider
                 value={length}
                 onValueChange={setLength}
@@ -191,7 +210,10 @@ export default function PasswordGenerator() {
                         id={key}
                         checked={value}
                         onCheckedChange={(checked) =>
-                          setOptions((prev) => ({ ...prev, [key]: checked === true }))
+                          setOptions((prev) => ({
+                            ...prev,
+                            [key]: checked === true,
+                          }))
                         }
                       />
                       <label
@@ -208,7 +230,10 @@ export default function PasswordGenerator() {
                   id="excludeSimilar"
                   checked={options.excludeSimilar}
                   onCheckedChange={(checked) =>
-                    setOptions((prev) => ({ ...prev, excludeSimilar: checked === true }))
+                    setOptions((prev) => ({
+                      ...prev,
+                      excludeSimilar: checked === true,
+                    }))
                   }
                 />
                 <label
