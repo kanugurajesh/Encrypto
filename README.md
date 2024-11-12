@@ -1,6 +1,6 @@
 # Encrypto
 
-I got tired of using the password generators by third parties that's I buidl a simple looking advanced password generator for myself
+I got tired of using the password generators by third parties that's I build a simple looking advanced password generator for myself
 
 # Tech Stack
 
