@@ -5,7 +5,7 @@ import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
-import { Copy, RefreshCw, Shield } from "lucide-react";
+import { Copy, RefreshCw } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -30,11 +30,12 @@ export default function PasswordGenerator() {
   };
 
   const generatePassword = () => {
-    if (
-      !Object.values(options).some(
-        (opt) => opt === true && opt !== options.excludeSimilar
-      )
-    ) {
+    // Check if at least one character type (excluding 'excludeSimilar') is selected
+    const isAnyCharacterTypeSelected = Object.entries(options)
+      .filter(([key]) => key !== "excludeSimilar") // Exclude 'excludeSimilar' from the check
+      .some(([, value]) => value === true);
+
+    if (!isAnyCharacterTypeSelected) {
       toast({
         title: "Error",
         description: "Please select at least one character type",
