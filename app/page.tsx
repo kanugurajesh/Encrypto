@@ -112,7 +112,7 @@ export default function PasswordGenerator() {
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <Shield className="w-12 h-12 mx-auto text-primary mb-4" />
-          <h1 className="text-3xl font-bold text-white">Password Generator</h1>
+          <h1 className="text-3xl font-bold text-white">Encrypto</h1>
           <p className="text-gray-400 mt-2">Create strong, secure passwords instantly</p>
         </div>
 
